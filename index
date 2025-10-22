@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Decision Making (MDM) Levels</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            font-size: 14px;
+            line-height: 1.5;
+            padding: 2rem 1rem;
+            max-width: 100%;
+            background: white;
+            color: #1a1a1a;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: #0a0a0a;
+                color: #e5e5e5;
+            }
+        }
+
+        main {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        header {
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .source {
+            font-size: 0.875rem;
+            color: #666;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .source {
+                color: #999;
+            }
+        }
+
+        .source a {
+            color: inherit;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            min-width: 900px;
+        }
+
+        thead {
+            border-bottom: 2px solid #e5e5e5;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            thead {
+                border-bottom-color: #333;
+            }
+        }
+
+        th {
+            padding: 0.75rem;
+            text-align: left;
+            font-weight: 600;
+            background: #fafafa;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            th {
+                background: #1a1a1a;
+            }
+        }
+
+        td {
+            padding: 1rem 0.75rem;
+            border-bottom: 1px solid #f0f0f0;
+            vertical-align: top;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            td {
+                border-bottom-color: #262626;
+            }
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .level {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .code {
+            font-family: 'SF Mono', Monaco, 'Courier New', monospace;
+            font-size: 0.875rem;
+            display: block;
+            margin: 0.25rem 0;
+        }
+
+        .category {
+            font-weight: 600;
+            margin-top: 0.75rem;
+        }
+
+        .category:first-child {
+            margin-top: 0;
+        }
+
+        ul {
+            margin: 0.5rem 0 0 1.25rem;
+            padding: 0;
+        }
+
+        li {
+            margin: 0.25rem 0;
+        }
+
+        .note {
+            margin-top: 2rem;
+            padding: 1rem;
+            background: #fafafa;
+            border-left: 3px solid #666;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .note {
+                background: #1a1a1a;
+                border-left-color: #666;
+            }
+        }
+
+        .note p {
+            margin: 0.5rem 0;
+        }
+
+        .note p:first-child {
+            margin-top: 0;
+        }
+
+        footer {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e5e5e5;
+            font-size: 0.875rem;
+            color: #666;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            footer {
+                border-top-color: #333;
+                color: #999;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 1.25rem;
+            }
+
+            table {
+                font-size: 13px;
+                min-width: 800px;
+            }
+
+            th, td {
+                padding: 0.75rem 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <h1>Levels of Medical Decision Making (MDM)</h1>
+            <p class="source">Source: <a href="https://www.ama-assn.org/system/files/2023-e-m-descriptors-guidelines.pdf">2023 CPT® E/M Code and Guideline Changes</a></p>
+        </header>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Level</th>
+                        <th>CPT Codes</th>
+                        <th>Problems</th>
+                        <th>Data</th>
+                        <th>Risk</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="level">Straightforward</span></td>
+                        <td>
+                            <span class="code">99202</span>
+                            <span class="code">99212</span>
+                        </td>
+                        <td>
+                            <strong>Minimal</strong>
+                            <ul>
+                                <li>1 self-limited or minor problem</li>
+                            </ul>
+                        </td>
+                        <td><strong>Minimal or none</strong></td>
+                        <td><strong>Minimal risk</strong> from additional diagnostic testing or treatment</td>
+                    </tr>
+
+                    <tr>
+                        <td><span class="level">Low</span></td>
+                        <td>
+                            <span class="code">99203</span>
+                            <span class="code">99213</span>
+                        </td>
+                        <td>
+                            <strong>Low</strong>
+                            <ul>
+                                <li>2+ self-limited or minor problems; or</li>
+                                <li>1 stable chronic illness; or</li>
+                                <li>1 acute uncomplicated illness or injury; or</li>
+                                <li>1 stable acute illness; or</li>
+                                <li>1 acute uncomplicated illness/injury requiring hospital inpatient or observation care</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <strong>Limited</strong> (meet 1 of 2)
+                            <p class="category">Category 1: Tests and documents</p>
+                            <ul>
+                                <li>Any combination of 2 from:
+                                    <ul>
+                                        <li>Review of prior external note(s) from each unique source</li>
+                                        <li>Review of result(s) of each unique test</li>
+                                        <li>Ordering of each unique test</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <p class="category">Category 2: Assessment requiring independent historian(s)</p>
+                        </td>
+                        <td><strong>Low risk</strong> from additional diagnostic testing or treatment</td>
+                    </tr>
+
+                    <tr>
+                        <td><span class="level">Moderate</span></td>
+                        <td>
+                            <span class="code">99204</span>
+                            <span class="code">99214</span>
+                        </td>
+                        <td>
+                            <strong>Moderate</strong>
+                            <ul>
+                                <li>1+ chronic illnesses with exacerbation, progression, or side effects; or</li>
+                                <li>2+ stable chronic illnesses; or</li>
+                                <li>1 undiagnosed new problem with uncertain prognosis; or</li>
+                                <li>1 acute illness with systemic symptoms; or</li>
+                                <li>1 acute complicated injury</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <strong>Moderate</strong> (meet 1 of 3)
+                            <p class="category">Category 1: Tests, documents, or independent historian(s)</p>
+                            <ul>
+                                <li>Any combination of 3 from:
+                                    <ul>
+                                        <li>Review of prior external note(s) from each unique source</li>
+                                        <li>Review of result(s) of each unique test</li>
+                                        <li>Ordering of each unique test</li>
+                                        <li>Assessment requiring independent historian(s)</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <p class="category">Category 2: Independent interpretation of tests</p>
+                            <ul>
+                                <li>Independent interpretation of test performed by another provider (not separately reported)</li>
+                            </ul>
+                            <p class="category">Category 3: Discussion of management or test interpretation</p>
+                            <ul>
+                                <li>Discussion with external provider/appropriate source (not separately reported)</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <strong>Moderate risk</strong> from additional diagnostic testing or treatment
+                            <p class="category">Examples:</p>
+                            <ul>
+                                <li>Prescription drug management</li>
+                                <li>Minor surgery with identified risk factors</li>
+                                <li>Elective major surgery without identified risk factors</li>
+                                <li>Treatment limited by social determinants of health</li>
+                            </ul>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><span class="level">High</span></td>
+                        <td>
+                            <span class="code">99205</span>
+                            <span class="code">99215</span>
+                        </td>
+                        <td>
+                            <strong>High</strong>
+                            <ul>
+                                <li>1+ chronic illnesses with severe exacerbation, progression, or side effects; or</li>
+                                <li>1 acute or chronic illness/injury that poses threat to life or bodily function</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <strong>Extensive</strong> (meet 2 of 3)
+                            <p class="category">Category 1: Tests, documents or independent historian(s)</p>
+                            <ul>
+                                <li>Any combination of 3 from:
+                                    <ul>
+                                        <li>Review of prior external note(s) from each unique source</li>
+                                        <li>Review of result(s) of each unique test</li>
+                                        <li>Ordering of each unique test</li>
+                                        <li>Assessment requiring independent historian(s)</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <p class="category">Category 2: Independent interpretation of tests</p>
+                            <ul>
+                                <li>Independent interpretation of test performed by another provider (not separately reported)</li>
+                            </ul>
+                            <p class="category">Category 3: Discussion of management or test interpretation</p>
+                            <ul>
+                                <li>Discussion with external provider/appropriate source (not separately reported)</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <strong>High risk</strong> from additional diagnostic testing or treatment
+                            <p class="category">Examples:</p>
+                            <ul>
+                                <li>Drug therapy requiring intensive monitoring for toxicity</li>
+                                <li>Elective major surgery with identified risk factors</li>
+                                <li>Emergency major surgery</li>
+                                <li>Decision regarding hospitalization or escalation of care</li>
+                                <li>Decision not to resuscitate or de-escalate care</li>
+                                <li>Parenteral controlled substances</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <aside class="note">
+            <p><strong>Note:</strong> To qualify for a particular level of MDM, two of the three elements for that level must be met or exceeded.</p>
+            <p>Each unique test, order, or document contributes to the combination of 2 or 3 in Category 1.</p>
+            <p><strong>CPT Codes:</strong> 99202-99205 are new patient visits; 99212-99215 are established patient visits.</p>
+        </aside>
+
+        <footer>
+            <p>Medical Decision Making (MDM) Reference | CPT® 2023 Guidelines</p>
+        </footer>
+    </main>
+</body>
+</html>
