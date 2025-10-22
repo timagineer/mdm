@@ -67,7 +67,6 @@
             width: 100%;
             border-collapse: collapse;
             font-size: 14px;
-            min-width: 900px;
         }
 
         thead {
@@ -85,6 +84,10 @@
             text-align: left;
             font-weight: 600;
             background: #fafafa;
+        }
+
+        th:nth-child(2) {
+            text-align: right;
         }
 
         @media (prefers-color-scheme: dark) {
@@ -120,6 +123,7 @@
             font-size: 0.875rem;
             display: block;
             margin: 0.25rem 0;
+            text-align: right;
         }
 
         .category {
@@ -132,12 +136,22 @@
         }
 
         ul {
-            margin: 0.5rem 0 0 1.25rem;
+            margin: 0.5rem 0 0 0;
             padding: 0;
+            list-style-position: outside;
+            padding-left: 1.25rem;
         }
 
         li {
             margin: 0.25rem 0;
+            padding-left: 0;
+            text-indent: 0;
+        }
+
+        li ul {
+            margin-top: 0.25rem;
+            margin-left: 0;
+            padding-left: 1.25rem;
         }
 
         .note {
@@ -177,6 +191,7 @@
             }
         }
 
+        /* Responsive stacked table styles */
         @media (max-width: 768px) {
             body {
                 padding: 1rem;
@@ -186,13 +201,83 @@
                 font-size: 1.25rem;
             }
 
-            table {
-                font-size: 13px;
-                min-width: 800px;
+            /* Hide table headers */
+            thead {
+                position: absolute;
+                clip: rect(0 0 0 0);
+                height: 1px;
+                width: 1px;
+                margin: -1px;
+                padding: 0;
+                overflow: hidden;
+                border: 0;
             }
 
-            th, td {
-                padding: 0.75rem 0.5rem;
+            /* Stack table rows */
+            tbody tr {
+                display: block;
+                margin-bottom: 2rem;
+                border: 1px solid #e5e5e5;
+                border-radius: 8px;
+                overflow: hidden;
+            }
+
+            @media (prefers-color-scheme: dark) {
+                tbody tr {
+                    border-color: #333;
+                }
+            }
+
+            tbody tr:last-child {
+                margin-bottom: 0;
+            }
+
+            /* Stack table cells */
+            td {
+                display: block;
+                padding: 1rem;
+                border-bottom: 1px solid #f0f0f0;
+                text-align: left;
+            }
+
+            @media (prefers-color-scheme: dark) {
+                td {
+                    border-bottom-color: #262626;
+                }
+            }
+
+            tbody tr td:last-child {
+                border-bottom: none;
+            }
+
+            /* Add labels before each cell */
+            td::before {
+                content: attr(data-label);
+                display: block;
+                font-weight: 600;
+                margin-bottom: 0.5rem;
+                color: #666;
+                font-size: 0.875rem;
+                text-transform: uppercase;
+                letter-spacing: 0.025em;
+            }
+
+            @media (prefers-color-scheme: dark) {
+                td::before {
+                    color: #999;
+                }
+            }
+
+            /* First cell (Level) styling */
+            tbody tr td:first-child {
+                background: #fafafa;
+                font-size: 1.125rem;
+            }
+
+            @media (prefers-color-scheme: dark) {
+                tbody tr td:first-child {
+                    background: #1a1a1a;
+                }
             }
         }
     </style>
@@ -209,7 +294,7 @@
                 <thead>
                     <tr>
                         <th>Level</th>
-                        <th>CPT Codes</th>
+                        <th>CPT</th>
                         <th>Problems</th>
                         <th>Data</th>
                         <th>Risk</th>
@@ -217,28 +302,28 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td><span class="level">Straightforward</span></td>
-                        <td>
+                        <td data-label="Level"><span class="level">Straightforward</span></td>
+                        <td data-label="CPT">
                             <span class="code">99202</span>
                             <span class="code">99212</span>
                         </td>
-                        <td>
+                        <td data-label="Problems">
                             <strong>Minimal</strong>
                             <ul>
                                 <li>1 self-limited or minor problem</li>
                             </ul>
                         </td>
-                        <td><strong>Minimal or none</strong></td>
-                        <td><strong>Minimal risk</strong> from additional diagnostic testing or treatment</td>
+                        <td data-label="Data"><strong>Minimal or none</strong></td>
+                        <td data-label="Risk"><strong>Minimal risk</strong> from additional diagnostic testing or treatment</td>
                     </tr>
 
                     <tr>
-                        <td><span class="level">Low</span></td>
-                        <td>
+                        <td data-label="Level"><span class="level">Low</span></td>
+                        <td data-label="CPT Codes">
                             <span class="code">99203</span>
                             <span class="code">99213</span>
                         </td>
-                        <td>
+                        <td data-label="Problems">
                             <strong>Low</strong>
                             <ul>
                                 <li>2+ self-limited or minor problems; or</li>
@@ -248,7 +333,7 @@
                                 <li>1 acute uncomplicated illness/injury requiring hospital inpatient or observation care</li>
                             </ul>
                         </td>
-                        <td>
+                        <td data-label="Data">
                             <strong>Limited</strong> (meet 1 of 2)
                             <p class="category">Category 1: Tests and documents</p>
                             <ul>
@@ -262,16 +347,16 @@
                             </ul>
                             <p class="category">Category 2: Assessment requiring independent historian(s)</p>
                         </td>
-                        <td><strong>Low risk</strong> from additional diagnostic testing or treatment</td>
+                        <td data-label="Risk"><strong>Low risk</strong> from additional diagnostic testing or treatment</td>
                     </tr>
 
                     <tr>
-                        <td><span class="level">Moderate</span></td>
-                        <td>
+                        <td data-label="Level"><span class="level">Moderate</span></td>
+                        <td data-label="CPT Codes">
                             <span class="code">99204</span>
                             <span class="code">99214</span>
                         </td>
-                        <td>
+                        <td data-label="Problems">
                             <strong>Moderate</strong>
                             <ul>
                                 <li>1+ chronic illnesses with exacerbation, progression, or side effects; or</li>
@@ -281,7 +366,7 @@
                                 <li>1 acute complicated injury</li>
                             </ul>
                         </td>
-                        <td>
+                        <td data-label="Data">
                             <strong>Moderate</strong> (meet 1 of 3)
                             <p class="category">Category 1: Tests, documents, or independent historian(s)</p>
                             <ul>
@@ -303,7 +388,7 @@
                                 <li>Discussion with external provider/appropriate source (not separately reported)</li>
                             </ul>
                         </td>
-                        <td>
+                        <td data-label="Risk">
                             <strong>Moderate risk</strong> from additional diagnostic testing or treatment
                             <p class="category">Examples:</p>
                             <ul>
@@ -316,19 +401,19 @@
                     </tr>
 
                     <tr>
-                        <td><span class="level">High</span></td>
-                        <td>
+                        <td data-label="Level"><span class="level">High</span></td>
+                        <td data-label="CPT Codes">
                             <span class="code">99205</span>
                             <span class="code">99215</span>
                         </td>
-                        <td>
+                        <td data-label="Problems">
                             <strong>High</strong>
                             <ul>
                                 <li>1+ chronic illnesses with severe exacerbation, progression, or side effects; or</li>
                                 <li>1 acute or chronic illness/injury that poses threat to life or bodily function</li>
                             </ul>
                         </td>
-                        <td>
+                        <td data-label="Data">
                             <strong>Extensive</strong> (meet 2 of 3)
                             <p class="category">Category 1: Tests, documents or independent historian(s)</p>
                             <ul>
@@ -350,7 +435,7 @@
                                 <li>Discussion with external provider/appropriate source (not separately reported)</li>
                             </ul>
                         </td>
-                        <td>
+                        <td data-label="Risk">
                             <strong>High risk</strong> from additional diagnostic testing or treatment
                             <p class="category">Examples:</p>
                             <ul>
