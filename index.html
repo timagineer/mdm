@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,7 +17,6 @@
             font-size: 14px;
             line-height: 1.5;
             padding: 2rem 1rem;
-            max-width: 100%;
             background: white;
             color: #1a1a1a;
         }
@@ -119,38 +119,64 @@
         }
 
         .code {
-            font-family: 'SF Mono', Monaco, 'Courier New', monospace;
+            font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace;
             font-size: 0.875rem;
             display: block;
             margin: 0.25rem 0;
             text-align: right;
         }
 
+        .data-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .data-header strong {
+            flex-shrink: 0;
+        }
+
+        .data-header .meet-criteria {
+            font-size: 0.875rem;
+            white-space: nowrap;
+            background: #1a1a1a;
+            color: #fff;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-weight: 500;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .data-header .meet-criteria {
+                background: #e5e5e5;
+                color: #1a1a1a;
+            }
+        }
+
         .category {
             font-weight: 600;
             margin-top: 0.75rem;
+            display: block;
         }
 
         .category:first-child {
-            margin-top: 0;
+            margin-top: 0.5rem;
         }
 
         ul {
             margin: 0.5rem 0 0 0;
-            padding: 0;
-            list-style-position: outside;
             padding-left: 1.25rem;
+            list-style-position: outside;
         }
 
         li {
             margin: 0.25rem 0;
-            padding-left: 0;
-            text-indent: 0;
         }
 
         li ul {
             margin-top: 0.25rem;
-            margin-left: 0;
             padding-left: 1.25rem;
         }
 
@@ -191,7 +217,6 @@
             }
         }
 
-        /* Responsive stacked table styles */
         @media (max-width: 768px) {
             body {
                 padding: 1rem;
@@ -201,7 +226,6 @@
                 font-size: 1.25rem;
             }
 
-            /* Hide table headers */
             thead {
                 position: absolute;
                 clip: rect(0 0 0 0);
@@ -213,7 +237,6 @@
                 border: 0;
             }
 
-            /* Stack table rows */
             tbody tr {
                 display: block;
                 margin-bottom: 2rem;
@@ -232,12 +255,10 @@
                 margin-bottom: 0;
             }
 
-            /* Stack table cells */
             td {
                 display: block;
                 padding: 1rem;
                 border-bottom: 1px solid #f0f0f0;
-                text-align: left;
             }
 
             @media (prefers-color-scheme: dark) {
@@ -250,7 +271,6 @@
                 border-bottom: none;
             }
 
-            /* Add labels before each cell */
             td::before {
                 content: attr(data-label);
                 display: block;
@@ -268,7 +288,6 @@
                 }
             }
 
-            /* First cell (Level) styling */
             tbody tr td:first-child {
                 background: #fafafa;
                 font-size: 1.125rem;
@@ -279,9 +298,16 @@
                     background: #1a1a1a;
                 }
             }
+
+            .data-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.25rem;
+            }
         }
     </style>
 </head>
+
 <body>
     <main>
         <header>
@@ -310,7 +336,7 @@
                         <td data-label="Problems">
                             <strong>Minimal</strong>
                             <ul>
-                                <li>1 self-limited or minor problem</li>
+                                <li><strong>1</strong> self-limited or minor problem</li>
                             </ul>
                         </td>
                         <td data-label="Data"><strong>Minimal or none</strong></td>
@@ -326,18 +352,22 @@
                         <td data-label="Problems">
                             <strong>Low</strong>
                             <ul>
-                                <li>2+ self-limited or minor problems; or</li>
-                                <li>1 stable chronic illness; or</li>
-                                <li>1 acute uncomplicated illness or injury; or</li>
-                                <li>1 stable acute illness; or</li>
-                                <li>1 acute uncomplicated illness/injury requiring hospital inpatient or observation care</li>
+                                <li><strong>2+</strong> self-limited or minor problems; or</li>
+                                <li><strong>1</strong> stable chronic illness; or</li>
+                                <li><strong>1</strong> acute uncomplicated illness or injury; or</li>
+                                <li><strong>1</strong> stable acute illness; or</li>
+                                <li><strong>1</strong> acute uncomplicated illness/injury requiring hospital inpatient or observation care</li>
                             </ul>
                         </td>
                         <td data-label="Data">
-                            <strong>Limited</strong> (meet 1 of 2)
-                            <p class="category">Category 1: Tests and documents</p>
+                            <div class="data-header">
+                                <strong>Limited</strong>
+                                <span class="meet-criteria">Meet 1 of 2</span>
+                            </div>
+                            <span class="category">Category I:</span>
+                            <strong>Tests and documents</strong>
                             <ul>
-                                <li>Any combination of 2 from:
+                                <li>Any combination of <strong>2</strong> from:
                                     <ul>
                                         <li>Review of prior external note(s) from each unique source</li>
                                         <li>Review of result(s) of each unique test</li>
@@ -345,7 +375,8 @@
                                     </ul>
                                 </li>
                             </ul>
-                            <p class="category">Category 2: Assessment requiring independent historian(s)</p>
+                            <span class="category">Category II:</span>
+                            <strong>Assessment requiring independent historian(s)</strong>
                         </td>
                         <td data-label="Risk"><strong>Low risk</strong> from additional diagnostic testing or treatment</td>
                     </tr>
@@ -359,18 +390,22 @@
                         <td data-label="Problems">
                             <strong>Moderate</strong>
                             <ul>
-                                <li>1+ chronic illnesses with exacerbation, progression, or side effects; or</li>
-                                <li>2+ stable chronic illnesses; or</li>
-                                <li>1 undiagnosed new problem with uncertain prognosis; or</li>
-                                <li>1 acute illness with systemic symptoms; or</li>
-                                <li>1 acute complicated injury</li>
+                                <li><strong>1+</strong> chronic illnesses with exacerbation, progression, or side effects; or</li>
+                                <li><strong>2+</strong> stable chronic illnesses; or</li>
+                                <li><strong>1</strong> undiagnosed new problem with uncertain prognosis; or</li>
+                                <li><strong>1</strong> acute illness with systemic symptoms; or</li>
+                                <li><strong>1</strong> acute complicated injury</li>
                             </ul>
                         </td>
                         <td data-label="Data">
-                            <strong>Moderate</strong> (meet 1 of 3)
-                            <p class="category">Category 1: Tests, documents, or independent historian(s)</p>
+                            <div class="data-header">
+                                <strong>Moderate</strong>
+                                <span class="meet-criteria">Meet 1 of 3</span>
+                            </div>
+                            <span class="category">Category I:</span>
+                            <strong>Tests, documents, or independent historian(s)</strong>
                             <ul>
-                                <li>Any combination of 3 from:
+                                <li>Any combination of <strong>3</strong> from:
                                     <ul>
                                         <li>Review of prior external note(s) from each unique source</li>
                                         <li>Review of result(s) of each unique test</li>
@@ -379,18 +414,20 @@
                                     </ul>
                                 </li>
                             </ul>
-                            <p class="category">Category 2: Independent interpretation of tests</p>
+                            <span class="category">Category II:</span>
+                            <strong>Independent interpretation of tests</strong>
                             <ul>
                                 <li>Independent interpretation of test performed by another provider (not separately reported)</li>
                             </ul>
-                            <p class="category">Category 3: Discussion of management or test interpretation</p>
+                            <span class="category">Category III:</span>
+                            <strong>Discussion of management or test interpretation</strong>
                             <ul>
                                 <li>Discussion with external provider/appropriate source (not separately reported)</li>
                             </ul>
                         </td>
                         <td data-label="Risk">
                             <strong>Moderate risk</strong> from additional diagnostic testing or treatment
-                            <p class="category">Examples:</p>
+                            <span class="category">Examples:</span>
                             <ul>
                                 <li>Prescription drug management</li>
                                 <li>Minor surgery with identified risk factors</li>
@@ -409,15 +446,19 @@
                         <td data-label="Problems">
                             <strong>High</strong>
                             <ul>
-                                <li>1+ chronic illnesses with severe exacerbation, progression, or side effects; or</li>
-                                <li>1 acute or chronic illness/injury that poses threat to life or bodily function</li>
+                                <li><strong>1+</strong> chronic illnesses with severe exacerbation, progression, or side effects; or</li>
+                                <li><strong>1</strong> acute or chronic illness/injury that poses threat to life or bodily function</li>
                             </ul>
                         </td>
                         <td data-label="Data">
-                            <strong>Extensive</strong> (meet 2 of 3)
-                            <p class="category">Category 1: Tests, documents or independent historian(s)</p>
+                            <div class="data-header">
+                                <strong>Extensive</strong>
+                                <span class="meet-criteria">Meet 2 of 3</span>
+                            </div>
+                            <span class="category">Category I:</span>
+                            <strong>Tests, documents or independent historian(s)</strong>
                             <ul>
-                                <li>Any combination of 3 from:
+                                <li>Any combination of <strong>3</strong> from:
                                     <ul>
                                         <li>Review of prior external note(s) from each unique source</li>
                                         <li>Review of result(s) of each unique test</li>
@@ -426,18 +467,20 @@
                                     </ul>
                                 </li>
                             </ul>
-                            <p class="category">Category 2: Independent interpretation of tests</p>
+                            <span class="category">Category II:</span>
+                            <strong>Independent interpretation of tests</strong>
                             <ul>
                                 <li>Independent interpretation of test performed by another provider (not separately reported)</li>
                             </ul>
-                            <p class="category">Category 3: Discussion of management or test interpretation</p>
+                            <span class="category">Category III:</span>
+                            <strong>Discussion of management or test interpretation</strong>
                             <ul>
                                 <li>Discussion with external provider/appropriate source (not separately reported)</li>
                             </ul>
                         </td>
                         <td data-label="Risk">
                             <strong>High risk</strong> from additional diagnostic testing or treatment
-                            <p class="category">Examples:</p>
+                            <span class="category">Examples:</span>
                             <ul>
                                 <li>Drug therapy requiring intensive monitoring for toxicity</li>
                                 <li>Elective major surgery with identified risk factors</li>
@@ -454,7 +497,7 @@
 
         <aside class="note">
             <p><strong>Note:</strong> To qualify for a particular level of MDM, two of the three elements for that level must be met or exceeded.</p>
-            <p>Each unique test, order, or document contributes to the combination of 2 or 3 in Category 1.</p>
+            <p>Each unique test, order, or document contributes to the combination of <strong>2</strong> or <strong>3</strong> in Category I <em>only applies to data</em></p>
             <p><strong>CPT Codes:</strong> 99202-99205 are new patient visits; 99212-99215 are established patient visits.</p>
         </aside>
 
@@ -463,4 +506,5 @@
         </footer>
     </main>
 </body>
+
 </html>
